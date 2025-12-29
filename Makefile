@@ -41,6 +41,8 @@ $(HTTP_BIN): $(SERVER_OBJ) $(CLI_OBJ)
 
 	$(CC) $(CFLAGS) $^ -lezcli -o $@
 
+.PHONY: all clean
+
 all: $(HTTP_BIN)
 
 clean:
