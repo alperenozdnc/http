@@ -14,4 +14,17 @@
         NULL                                                                   \
     }
 
+/*
+ * helper for clearing the terminal/console window.
+ */
 #define CLEAR_CONSOLE() system("clear")
+
+/*
+ * helper for printing the appropriate prefix and header for an http action.
+ */
+#define PRINT_ACTION_INFO(prefix, buf)                                         \
+    do {                                                                       \
+        printf(ANSI_BLUE prefix ANSI_RESET);                                   \
+        print_http_header(buf);                                                \
+        printf("\n");                                                          \
+    } while (0);
