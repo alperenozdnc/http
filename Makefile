@@ -40,3 +40,8 @@ $(HTTP_BIN): $(SERVER_OBJ) $(CLI_OBJ)
 	@mkdir -p $(dir $@)
 
 	$(CC) $(CFLAGS) $^ -lezcli -o $@
+
+all: $(HTTP_BIN)
+
+clean:
+	@rm -rf $(BUILD_DIR)
