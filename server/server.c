@@ -54,7 +54,7 @@ bool server(in_port_t port) {
         goto exit;
     }
 
-    for (;;) {
+    while (true) {
         socklen_t socket_len = sizeof(*socket_addr);
         int client_fd = accept(tcp_socket, socket_addr, &socket_len);
 
