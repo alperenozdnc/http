@@ -13,3 +13,5 @@
     (opt_s *[]) {                                                              \
         NULL                                                                   \
     }
+
+#define CLEAR_CONSOLE() system("clear")
