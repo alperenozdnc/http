@@ -23,7 +23,7 @@ bool server(in_port_t port) {
     bool ret = true;
     int tcp_socket = socket(AF_INET, SOCK_STREAM, 0);
 
-    if (!tcp_socket)
+    if (tcp_socket < 0)
         return false; // no sockets to close yet, not 'goto exit'ing
 
     int OPT_REUSEADDR = SO_REUSEADDR;
@@ -40,14 +40,14 @@ bool server(in_port_t port) {
 
     struct sockaddr *socket_addr = (struct sockaddr *)&_socket_addr;
 
-    if (!bind(tcp_socket, socket_addr, sizeof(*socket_addr))) {
+    if (bind(tcp_socket, socket_addr, sizeof(*socket_addr)) < 0) {
         perror("bind()");
 
         ret = false;
         goto exit;
     }
 
-    if (!listen(tcp_socket, SOMAXCONN)) {
+    if (listen(tcp_socket, SOMAXCONN) < 0) {
         perror("listen()");
 
         ret = false;
@@ -58,7 +58,7 @@ bool server(in_port_t port) {
         socklen_t socket_len = sizeof(*socket_addr);
         int client_fd = accept(tcp_socket, socket_addr, &socket_len);
 
-        if (!client_fd) {
+        if (client_fd < 0) {
             perror("accept()");
 
             ret = false;
