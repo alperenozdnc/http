@@ -39,7 +39,7 @@ HTTP_BIN := $(BIN_DIR)/http
 $(HTTP_BIN): $(SERVER_OBJ) $(CLI_OBJ)
 	@mkdir -p $(dir $@)
 
-	$(CC) $(CFLAGS) $^ -lezcli -o $@
+	$(CC) $(CFLAGS) $^ -lezcli -lm -o $@
 
 .PHONY: all clean
 
