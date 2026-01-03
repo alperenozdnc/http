@@ -28,7 +28,7 @@ ret_e opt_strip_body(void *_ctx, CLI_IGNORE_TOK) {
     ctx->does_strip_paths = true;
 
     if (is_last_opt(ctx, DOES_OPTION_WANT_INPUT) && ctx->serve_mode) {
-        SERVE_HTTP(ctx->port);
+        SERVE_HTTP(ctx->port, ctx);
     }
 
     return RET_NORMAL;

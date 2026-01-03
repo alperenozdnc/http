@@ -4,6 +4,7 @@
 #include <http/def.h>
 #include <http/misc.h>
 #include <http/server.h>
+#include <http/utils/get_pub_entries.h>
 
 #include <netinet/in.h>
 
@@ -32,19 +33,21 @@ ret_e opt_public_body(void *_ctx, char *dir) {
             dir);
 
         if (is_last_opt(ctx, DOES_OPTION_WANT_INPUT) && ctx->serve_mode)
-            SERVE_HTTP(ctx->port);
+            SERVE_HTTP(ctx->port, ctx);
 
         ctx->pub_dir_set = true;
         ctx->pub_dir = strdup(".");
+        get_pub_entries(ctx, NULL);
 
         return RET_WARN;
     }
 
     ctx->pub_dir_set = true;
     ctx->pub_dir = strdup(dir);
+    get_pub_entries(ctx, NULL);
 
     if (is_last_opt(ctx, DOES_OPTION_WANT_INPUT) && ctx->serve_mode)
-        SERVE_HTTP(ctx->port);
+        SERVE_HTTP(ctx->port, ctx);
 
     return RET_NORMAL;
 }

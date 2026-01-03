@@ -27,7 +27,7 @@ ret_e opt_serve_body(void *_ctx, char *tok) {
     }
 
     CLEAR_CONSOLE();
-    SERVE_HTTP(port);
+    SERVE_HTTP(port, ctx);
 
     return RET_NORMAL;
 }
