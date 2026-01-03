@@ -15,7 +15,7 @@
 #define HTML_EXTENSION ".html"
 
 #define NOT_FOUND_PAGE "404" HTML_EXTENSION
-#define NOT_FOUND_DEFAULT_PAGE "assume_this_is_default_404"
+#define NOT_FOUND_DEFAULT_PAGE "/.local/http/404.html"
 
 #define CONTENT_TYPE_PREFIX "Content-Type: "
 #define CONTENT_LENGTH_PREFIX "Content-Length: "
