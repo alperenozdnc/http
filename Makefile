@@ -35,6 +35,9 @@ $(SERVER_BUILD_DIR)/%.o: $(SERVER_DIR)/%.c
 	$(CC) $(CFLAGS) -c $< -o $@
 
 HTTP_BIN := $(BIN_DIR)/http
+HTTP_ASSETS_DIR = ~/.local/http
+ASSETS_DIR = assets
+ROOT_BIN_DIR = /usr/bin
 
 $(HTTP_BIN): $(SERVER_OBJ) $(CLI_OBJ)
 	@mkdir -p $(dir $@)
@@ -45,5 +48,13 @@ $(HTTP_BIN): $(SERVER_OBJ) $(CLI_OBJ)
 
 all: $(HTTP_BIN)
 
+install: $(HTTP_BIN)
+	@mkdir -p $(HTTP_ASSETS_DIR)
+	@cp $(ASSETS_DIR)/* $(HTTP_ASSETS_DIR)/
+	@sudo cp $(HTTP_BIN) $(ROOT_BIN_DIR)
+
+uninstall:
+	@sudo rm -rf $(ROOT_BIN_DIR)/http
+
 clean:
-	@rm -rf $(BUILD_DIR)
+	@rm -rf $(BUILD_DIR) $(HTTP_ASSETS_DIR)
