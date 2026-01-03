@@ -47,12 +47,12 @@
 /*
  * helper for serving http on a specific port. this macro exists because the
  * 'serve' option isn't the only entrypoint. */
-#define SERVE_HTTP(port)                                                       \
+#define SERVE_HTTP(port, ctx)                                                  \
     do {                                                                       \
         cliprint(CLI_HINT, HTTP_PREFIX,                                        \
                  "serving on port %d | <http://localhost:%d>\n", port, port);  \
                                                                                \
-        if (!server(htons(port))) {                                            \
+        if (!server(htons(port), ctx)) {                                       \
             cliprint(CLI_ERROR, HTTP_PREFIX, "error starting server.");        \
                                                                                \
             return RET_FAIL;                                                   \
