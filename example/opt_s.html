@@ -1,0 +1,106 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" type="text/css" href="/styles.css" />
+    <title>ezcli/opt_s</title>
+  </head>
+
+  <body>
+    <section>
+      <h1>ezcli/opt_s</h1>
+
+      <pre><code>
+typedef struct {
+    char **aliases;
+    char *desc;
+
+    bool want_input;
+    bool allocated;
+
+    void *ctx;
+    ret_e (*body)(void *ctx, char *tok);
+} opt_s;
+        </code></pre>
+
+      <p>
+        keeps information about an option. this is the building block of your
+        program.
+      </p>
+    </section>
+
+    <section>
+      <h3><code>char **aliases</code></h3>
+      <p>
+        a NULL-terminated string array keeping aliases for an option. you can
+        use
+        <code>CLI_ALIASES(alias1, alias2, ...)</code> to avoid manual casting
+        and NULL-termination.
+      </p>
+
+      <p>
+        use <code>CLI_NONOPT</code>, <code>CLI_DEFAULT_OPT</code>,
+        <code>CLI_COMMON_OPT</code>, and <code>CLI_POST_COMMON_OPT</code> inside
+        <code>CLI_ALIASES</code> calls to create nonopts, default opts, common
+        opts, and post-common opts. for these <q>special</q> options,
+        <code>desc</code> is not required. a default opt triggers when the
+        program is ran with no args.
+      </p>
+
+      <p>
+        <a href="/special">see ezcli/special</a> for what these
+        <q>special</q> options are.
+      </p>
+
+      <h3><code>char *desc</code></h3>
+      <p>a probably-short string describing your option's functionality.</p>
+
+      <h3><code>bool want_input</code></h3>
+      <p>
+        <code>false</code> by default. specifies if your option requires input.
+        ignored in nonopts and default opts.
+      </p>
+
+      <h3><code>bool allocated</code></h3>
+      <p>
+        this is how ezcli checks if you heap-allocated your option using
+        <code>allocopt()</code> or not. you don't need to fill this field
+        yourself. make sure you
+        <a href="/allocopt">see ezcli/allocopt</a> before planning to use
+        <code>allocopt()</code>.
+      </p>
+
+      <h3><code>void *ctx</code></h3>
+      <p>
+        this can be anything: program state, config, user data, etc. cast it
+        inside your option body to your expected type.
+      </p>
+
+      <h3><code>ret_e body()</code></h3>
+      <p>
+        the actual functionality. takes context and next token (if
+        <code>want_input = true</code>). you can use
+        <code>CLI_IGNORE_CTX</code>, <code>CLI_IGNORE_TOK</code>, and
+        <code>CLI_IGNORE_ARGS</code> to tell the compiler arguments won’t be
+        used.
+      </p>
+
+      <h3><code>ret_e</code> values</h3>
+      <ul>
+        <li><code>RET_NORMAL</code> — continue program</li>
+        <li><code>RET_WARN</code> — warning</li>
+        <li>
+          <code>RET_FAIL</code> — error (terminates unless laidback mode is
+          enabled)
+        </li>
+      </ul>
+
+      <p>
+        you'd be surprised what you can do with this building block with shared
+        context idea. you could even let the USER define the commands. weird,
+        right?
+      </p>
+    </section>
+  </body>
+</html>

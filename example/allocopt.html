@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" type="text/css" href="/styles.css" />
+    <title>ezcli/allocopt</title>
+  </head>
+
+  <body>
+    <section>
+      <h1>ezcli/allocopt (linux-only)</h1>
+
+      <pre><code>
+void allocopt(cli_s *cli, const opt_s *opt_stack);
+
+</code></pre>
+
+      <p>
+        allocates a stack-allocated <code>opt_s</code> struct to the
+        <code>cli-&gt;opts</code> dynamic array in a <code>cli_s</code> struct
+        using heap allocation. ezcli owns all opts passed to
+        <code>allocopt()</code>. your only responsibility is to:
+      </p>
+    </section>
+
+    <section>
+      <p>
+        make sure <code>ctx</code> and <code>body</code> lives through the
+        lifetime of your program.
+      </p>
+      <p>
+        make sure you run <code>freecli()</code> in your cleanup/die/termination
+        implementation.
+      </p>
+
+      <p>
+        <a href="/cli_s">see ezcli/cli_s</a> and
+        <a href="/opt_s">ezcli/opt_s</a> for more details.
+      </p>
+    </section>
+  </body>
+</html>

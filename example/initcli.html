@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" type="text/css" href="/styles.css" />
+    <title>ezcli/initcli</title>
+  </head>
+
+  <body>
+    <section>
+      <h1>ezcli/initcli</h1>
+
+  <pre><code>
+void initcli(cli_s *cli, char *cmd, char *desc, char *usage, char *footer,
+opt_s **opts, char *help_aliases[]);
+  </code></pre>
+
+      <p>
+        initializes a general command line interface struct. see
+        <a href="/cli_s">ezcli/cli_s</a> for explanation of arguments.
+      </p>
+    </section>
+
+    <section>
+      <p>
+        ezcli only owns memory of <code>*cli</code>. the command name,
+        description, usage, opts, etc. are things YOU should make sure live
+        until the end of the program.
+      </p>
+
+      <p>make sure you run <code>freecli()</code> after usage.</p>
+
+      <p>
+        note: <code>**opts</code> can also be populated with
+        <code>addopt()</code>, but if you choose to give options to
+        <code>initcli()</code>, make sure you null-terminate them.
+        <code>*help_aliases[]</code> should also be null-terminated.
+      </p>
+    </section>
+  </body>
+</html>

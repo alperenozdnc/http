@@ -1,0 +1,72 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" type="text/css" href="/styles.css" />
+    <title>ezcli/cli_s</title>
+  </head>
+
+  <body>
+    <section>
+      <h1>ezcli/cli_s</h1>
+
+      <pre><code>
+typedef struct __cli_s {
+    char *cmd;
+    char *desc;
+    char *usage;
+    char *footer;
+
+    int tok_idx;
+    int argc;
+    char **argv;
+
+    opt_s **opts;
+    size_t opts_len;
+
+    char **help_aliases;
+    void (*help)(struct __cli_s *cli, opt_s **opts);
+} cli_s;
+        </code></pre>
+
+      <p>
+        this is where all the information about your command line interface
+        program is kept. <a href="/opt_s">see ezcli/opt_s</a> for what to
+        fill <code>**opts</code> with.
+      </p>
+    </section>
+
+    <section>
+      <p>
+        <code>*cmd</code>, <code>*desc</code>, <code>*usage</code>, and
+        <code>*footer</code> are information that is printed during help.
+        <code>*footer</code> is the bottommost message (like in
+        <code>cat --help</code>).
+      </p>
+
+      <p>
+        <code>**opts</code> should be filled with <code>opt_s</code> structs and
+        NULL-terminated.
+      </p>
+
+      <p>
+        <code>help_aliases</code> should be filled with aliases for the help
+        option. this also must be NULL-terminated.
+      </p>
+
+      <p>
+        the <code>help</code> function pointer points to the default help
+        functionality that ezcli provides by default. you can replace this with
+        your own function. it must take <code>*cli_s</code> and
+        <code>**opt_s</code> as arguments.
+      </p>
+
+      <p>
+        note: <code>tok_idx</code>, <code>argc</code>, <code>argv</code>, and
+        <code>opts_len</code> are fields that you should not manually set or
+        change. modifying them may lead to undefined behaviour.
+      </p>
+    </section>
+  </body>
+</html>

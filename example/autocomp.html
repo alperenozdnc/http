@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" type="text/css" href="/styles.css" />
+    <title>ezcli/allocopt</title>
+  </head>
+
+  <body>
+    <section>
+      <h1>ezcli/autocomp (linux-only)</h1>
+
+      <pre><code>
+void genautocomp(cli_s *cli, char *filename, bool bash, bool zsh);
+
+</code></pre>
+
+      <p>
+        generates autocompletions for both bash and zsh based on information
+        filled in <code>cli-&gt;cmd</code> and <code>cli-&gt;opts</code>.
+      </p>
+      <p>
+        this function outputs files in the current working directory as
+        <code>filename.bash</code> and <code>filename.zsh</code>
+      </p>
+    </section>
+
+    <section>
+      <p>
+        <code>genautocomp()</code> generates from templates living in the
+        directory <code>autocomp/</code>. these templates are then copied to
+        <code>~/.local/ezcli</code> during installation.
+      </p>
+
+      <p>
+        these generated autocompletion scripts should either be manually sourced
+        or put in a directory where your shell sources it for
+        autoinitialization.
+      </p>
+    </section>
+  </body>
+</html>

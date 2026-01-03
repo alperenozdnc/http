@@ -1,0 +1,111 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" type="text/css" href="/styles.css" />
+    <title>ezcli/specials</title>
+  </head>
+
+  <body>
+    <section>
+      <h1>ezcli/specials</h1>
+    </section>
+    <section>
+      <p>there are exactly four special options in ezcli:</p>
+
+      <p>
+        these are actually <q>phony</q> options - in a sense that they don't
+        actually have an alias, (although requiring their corresponding special
+        alias to be able to be recognized in an <code>opt_s</code> struct) - but
+        these special <q>options</q> are still passable as context-aware
+        behaviour containers, so you can still loosely define them as options.
+      </p>
+      <p>
+        these options are not printed in help, so they don't require a
+        <code>desc</code> field like all other options do.
+      </p>
+
+      <p>
+        note: setting more than a single alias (the intended ones) to any of
+        these special <q>options</q> will cause behaviour you don't necessarily
+        want.
+      </p>
+    </section>
+
+    <section>
+      <section>
+        <h3>non-option option (nonopt)</h3>
+        <p>
+          this is the behaviour that is executed when a token is not recognized
+          as any normal option and isn't passed as argument to any option.
+        </p>
+
+        <p>
+          for example, <code>/home</code> is the nonopt for
+          <code>ls /home</code>.<br />
+          <code>./src</code> is the nonopt for
+          <code>grep -r "ezcli" ./src</code>.
+        </p>
+
+        <p>
+          for usage, set extern boolean <code>CLI_ALLOW_NONOPT</code> to
+          <code>true</code>. if this flag is set to true and no nonopts are
+          found, ezcli will throw an error.
+        </p>
+
+        <p>
+          then, you should create an <code>opt_s</code> struct that has
+          <code>CLI_NONOPT</code> as the only item in its
+          <code>aliases</code> field.
+        </p>
+      </section>
+      <section>
+        <h3>default option</h3>
+        <p>
+          this is the behaviour that is executed when your program receives no
+          input (<code>argc = 1, argv = {cmd_name, NULL}</code>). if not
+          defined, ezcli will print the default help option which is
+          automatically generated.
+        </p>
+
+        <p>
+          for usage, you should create an <code>opt_s</code> struct that has
+          <code>CLI_DEFAULT_OPT</code> as the only item in its
+          <code>aliases</code>
+          field.
+        </p>
+      </section>
+
+      <section>
+        <h3>common option</h3>
+        <p>
+          this is the behaviour that is executed before every successfully
+          parsed option. this is useful for formatting, debugging, pretty
+          printing, logging, etc.
+        </p>
+
+        <p>
+          for usage, you should create an <code>opt_s</code> struct that has
+          <code>CLI_COMMON_OPT</code> as the only item in its
+          <code>aliases</code>
+          field.
+        </p>
+      </section>
+      <section>
+        <h3>post-common option</h3>
+        <p>
+          this is the behaviour that is executed after every successfully parsed
+          option. this is useful for formatting, debugging, pretty printing,
+          logging, etc.
+        </p>
+
+        <p>
+          for usage, you should create an <code>opt_s</code> struct that has
+          <code>CLI_POST_COMMON_OPT</code> as the only item in its
+          <code>aliases</code> field.
+        </p>
+      </section>
+    </section>
+  </body>
+</html>

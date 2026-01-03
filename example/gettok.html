@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" type="text/css" href="/styles.css" />
+    <title>ezcli/gettok</title>
+  </head>
+
+  <body>
+        <section>
+            
+            <h1>ezcli/gettok</h1>
+
+    <pre><code>
+    char *gettok_prev(cli_s *cli);
+    char *gettok_next(cli_s *cli);
+    char *gettok_offset(cli_s *cli, int n);
+    </code></pre>
+
+            <p>
+                this is a set of token-peeking utilities to access specific argv indices.
+            </p>
+
+            <p>
+                <a href="/cli_s">see ezcli/cli_s</a> for what fields to fill it with.
+            </p>
+        </section>
+
+        <section>
+            <h3><code>gettok_prev()</code></h3>
+            <p>
+                gets the previously parsed token. if <code>idx = 1</code>, returns
+                <code>NULL</code>.
+            </p>
+
+            <h3><code>gettok_next()</code></h3>
+            <p>
+                gets the next parsed token. if <code>idx = end</code>, returns
+                <code>NULL</code>.
+            </p>
+
+            <h3><code>gettok_offset()</code></h3>
+            <p>
+                offsets <code>n</code> from the current token's position. returns
+                <code>NULL</code> if the offset is too small or too large.
+            </p>
+
+            <p>
+                note: use <code>CLI_TOK_FIRST</code> as <code>n</code> for the first token
+                in <code>argv</code> and <code>CLI_TOK_LAST</code> as <code>n</code> for
+                the final token.
+            </p>
+        </section>
+
+  </body>
+</html>

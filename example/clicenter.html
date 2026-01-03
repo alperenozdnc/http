@@ -1,0 +1,71 @@
+
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" type="text/css" href="/styles.css" />
+    <title>ezcli/clicenter</title>
+</head>
+
+<body>
+    <section>
+        <h1>ezcli/clicenter (linux-only)</h1>
+
+<pre><code>
+void clicenter_horiz(window_s wininfo, char *str);
+void clicenter_vert(window_s wininfo, char *str);
+void clicenter_both(window_s wininfo, char *str);
+
+</code></pre>
+    </section>
+
+    <section>
+        <p>
+            these utility functions are used for centering single/multi line strings.
+            they only support ascii characters at this point of time.
+        </p>
+    </section>
+
+    <section>
+        <p>
+            at some point, you may need to center strings, may that be for readability,
+            eye candy, or anything else, doesn't matter. centering a string is a solved
+            problem and is deterministic in terms of the correct result. thus, these
+            not-so-primitive-looking utilities had to be included in ezcli.
+        </p>
+
+        <ul>
+            <li><code>clicenter_horiz()</code> centers a single/multi line string horizontally.</li>
+            <li><code>clicenter_vert()</code> centers a single/multi line string vertically.</li>
+            <li><code>clicenter_both()</code> centers a single/multi line string both vertically and horizontally.</li>
+        </ul>
+    </section>
+    <section>
+        <p>
+            <code>clicenter_vert()</code> does handle excess newlines at the start or end of your string.
+            and so does <code>clicenter_both()</code>. in <code>clicenter_horiz()</code> your excess newlines
+            must be assumed a design choice and are printed as-is.
+        </p>
+
+        <p>
+            these utilities only support ascii characters and implicitly assume that 
+            one visible character always equates to a single byte.
+        </p>
+
+        <p>
+            the <code>window_s</code> struct (see <a href="/wininfo">ezcli/wininfo</a>) is just a struct that holds information about the bounds
+            of the current terminal window. these utilities are currently only linux-supported.
+            although, they don't do any heap allocation and don't return anything.
+        </p>
+
+        <p>
+            in future revisions, the choice of the centering utilities being only desktop
+            and not embedded might change, and in that case, keep in mind that you can always
+            create an artificial <code>window_s</code> struct.
+        </p>
+    </section>
+</body>
+
+</html>

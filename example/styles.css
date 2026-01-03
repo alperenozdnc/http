@@ -1,0 +1,96 @@
+@import url("https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,100..800;1,100..800&family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap");
+
+*,
+*::before,
+*::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Playfair Display", serif;
+}
+
+body {
+    width: 100vw;
+    background: #111b21;
+    min-height: 100vh;
+    color: #def0f9;
+    font-size: 18px;
+}
+
+pre {
+    background: rgba(255, 255, 255, 0.1);
+    padding: 1rem 2rem;
+    display: block;
+    margin-bottom: 1rem;
+    color: rgb(190, 150, 200);
+    overflow-x: auto;
+    white-space: pre;
+    max-width: 100%;
+}
+
+code {
+    padding: 0.2rem;
+    line-height: 2rem;
+    font-family: "JetBrains Mono", monospace;
+}
+
+pre code {
+    font-size: 18px;
+}
+
+h1 {
+    font-size: 45px;
+    margin-bottom: 10px;
+}
+
+a {
+    color: #649dbc;
+}
+
+ul {
+    margin-left: 0.5rem;
+}
+
+li {
+    margin-block: 1rem;
+    font-size: 20px;
+    list-style: none;
+}
+
+li li {
+    margin-block: 0.3rem;
+}
+
+li::before {
+    content: ">";
+    font-size: 13px;
+    margin-right: 10px;
+}
+
+section {
+    padding-left: 1rem;
+    padding-block: 2rem;
+    padding-right: 2rem;
+}
+
+p {
+    margin-bottom: 1rem;
+}
+
+h3 {
+    font-size: 20px;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+}
+
+@media (max-width: 720px) {
+    pre code {
+        font-size: 15px;
+    }
+}
+
+@media (max-width: 600px) {
+    pre code {
+        font-size: 12px;
+    }
+}

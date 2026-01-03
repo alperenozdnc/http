@@ -1,0 +1,113 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" type="text/css" href="/styles.css" />
+    <title>ezcli/embedded</title>
+</head>
+
+<body>
+    <section>
+        <h1>ezcli/embedded</h1>
+
+        <p>
+            there exists an embedded build/version of ezcli that you can compile
+            with
+            <code>'make embedded'</code> in the source root. this version doesn't
+            include ezdocs, autocompletion support, or examples.
+        </p>
+    </section>
+
+    <section>
+        <h2>the embedded version of ezcli:</h2>
+
+        <ul>
+            <li>
+                doesn't use <code>&lt;stdlib.h&gt;</code>, so no
+                <code>malloc()</code>, <code>free()</code>, <code>exit()</code>, ...
+                is used.
+            </li>
+            <li>
+                doesn't use <code>&lt;string.h&gt;</code>, so no
+                <code>strlen()</code>, <code>strcmp()</code>, <code>strdup()</code>,
+                ... is used.
+            </li>
+            <li>
+                doesn't use <code>&lt;stdio.h&gt;</code>, so no <code>printf()</code>,
+                <code>fopen()</code>, <code>puts()</code>, ... is used.
+            </li>
+        </ul>
+
+        <p>
+            to use embedded ezcli, you should be in an environment where
+            <code>&lt;stdbool.h&gt;</code>, <code>&lt;stddef.h&gt;</code>,
+            <code>&lt;stdarg.h&gt;</code>, and <code>&lt;limits.h&gt;</code> exists
+            (and i'm pretty sure 99% of people have these even embedded), and you
+            should define <code>c_puts()</code> and <code>c_exit()</code>.
+        </p>
+
+        <p>
+            instead of only including <code>&lt;ezcli.h&gt;</code> like the desktop
+            version implementation of ezcli, you should also include
+            <code>&lt;ezcli/platform.h&gt;</code> to be able to define these 'c_*()'
+            functions.
+        </p>
+    </section>
+
+    <section>
+        <p>
+            the embedded version does absolutely no heap-allocation so you don't
+            need to write <code>'freecli()'</code> to end your program.
+        </p>
+
+        <h3>here are things that aren't included in embedded:</h3>
+
+        <ul>
+            <li>
+                <code>freecli()</code> (see <a href="/freecli">ezcli/freecli</a>)
+            </li>
+            <li><code>addopt()</code> (see <a href="/addopt">ezcli/addopt</a>)</li>
+            <li>
+                <code>allocopt()</code> (see <a href="/allocopt">ezcli/allocopt</a>)
+            </li>
+            <li>
+                <code>askbinary()</code> (see
+                <a href="/askbinary">ezcli/askbinary</a>)
+            </li>
+            <li>
+                <code>genautocomp()</code> (see
+                <a href="/genautocomp">ezcli/autocomp</a>)
+            </li>
+            <li><code>delopt()</code> (see <a href="/delopt">ezcli/delopt</a>)</li>
+        </ul>
+
+        <p>
+            in summary, anything that alters the <code>cli_s</code> struct in
+            runtime or does heap allocation is not included.
+        </p>
+
+        <p>
+            and yes, <code>askbinary()</code> doesn't fit into these two categories,
+            but i believe its too high-level and has too many variants in the
+            functions it uses to be included in the embedded build.
+        </p>
+
+        <p>
+            this desktop -> embedded switch just converts ezcli from a runtime
+            modifying library to a library that's almost procedural in the sense
+            that it almost reads like a recipe that tells you how to make a command
+            line interface.
+        </p>
+    </section>
+
+    <section>
+        <pre><code>
+                define options, usage, description, behaviours, context, and that's it. no runtime
+                mutation, no memory side effects. you define your cli, you own it, the program dies.
+            </code></pre>
+    </section>
+</body>
+
+</html>

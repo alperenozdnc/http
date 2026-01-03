@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" type="text/css" href="/styles.css" />
+    <title>ezcli/delopt</title>
+  </head>
+
+  <body>
+    <section>
+      <h1>ezcli/delopt (linux-only)</h1>
+
+<pre><code>
+void delopt(cli_s *cli, ...opts);
+
+</code></pre>
+
+      <p>
+        deallocates a variable amount of <code>opt_s</code> structs from the
+        <code>cli-&gt;opts</code> dynamic array in a <code>cli_s</code> struct.
+      </p>
+    </section>
+
+    <section>
+      <p>
+        <a href="/cli_s">see ezcli/cli_s</a> and
+        <a href="/opt_s">ezcli/opt_s</a> for more details.
+      </p>
+
+      <p>
+        note: <code>delopt()</code> is a macro that inserts a sentinel
+        <code>NULL</code> after your variable amount of options. the actual
+        functionality lives in <code>src/ezcli/utils/delopt.c</code>.
+      </p>
+    </section>
+  </body>
+</html>

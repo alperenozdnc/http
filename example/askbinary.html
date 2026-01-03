@@ -1,0 +1,59 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" type="text/css" href="/styles.css" />
+    <title>ezcli/askbinary</title>
+  </head>
+
+  <body>
+    <section>
+      <h1>ezcli/askbinary (linux-only)</h1>
+
+<pre><code>
+bool askbinary(char *msg, char **yes_aliases, char **no_aliases,
+               bool is_no_inclusive);
+
+</code></pre>
+
+      <p>
+        lets you ask binary-answered questions. usually yes or no. because
+        ninety nine times out of a hundred, you'll need yes or no input in your
+        cli program.
+      </p>
+    </section>
+
+    <section>
+        <h3><code>*msg</code></h3>
+        <p>
+            the string that gets printed while waiting for input.
+            <code>askbinary()</code>
+            does not append a newline to this message.
+        </p>
+
+        <h3><code>**yes_aliases</code>, <code>**no_aliases</code></h3>
+        <p>
+            <code>NULL</code>-terminated string arrays. no checking is done on these,
+            if you put duplicated strings across both arrays, or just flat-out input
+            empty arrays, ezcli will continue as if nothing is wrong. the only time
+            validation is done is for the creation of <code>cli_s</code> (see
+            <a href="/cli_s">ezcli/cli_s</a>) and <code>opt_s</code> (see
+            <a href="/opt_s">ezcli/opt_s</a>) structs.
+        </p>
+
+        <h3><code>is_no_inclusive</code></h3>
+        <p>
+            if <code>true</code>, counts every non-yes input as no.<br />
+            if <code>false</code>, an error is thrown that states that the input is
+            unknown.
+        </p>
+
+        <p>
+            note: <code>askbinary()</code> does not let the user do any retries if
+            unrecognized input is received. you can implement your own looping
+            functionality if you desire it.
+        </p>
+    </section>
+  </body>
+</html>

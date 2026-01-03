@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" type="text/css" href="/styles.css" />
+    <title>ezcli/cliprint</title>
+  </head>
+
+  <body>
+    <section>
+      <h1>ezcli/cliprint</h1>
+
+<pre><code>
+void cliprint(print_e type, char *prefix, char *fmt, ...);
+
+</code></pre>
+
+      <p>
+        general colored printing utility that autoinserts newlines and also
+        takes custom prefixes. it also does printf-like
+        <code>%</code> formatting.
+      </p>
+    </section>
+
+    <section>
+        <p>
+            <code>print_e type</code> has to be <code>CLI_HINT</code>,
+            <code>CLI_WARNING</code>, or <code>CLI_ERROR</code>. these types of prints
+            are colored blue, yellow, and red respectively, and also prefixed with
+            <code>HINT:</code>, <code>WARN:</code>, and <code>ERROR:</code>.
+        </p>
+
+        <p>
+            setting the prefix to <code>NULL</code> will show these prefixes. setting
+            it to <code>CLI_EMPTY_PREFIX</code> will show none.
+        </p>
+    </section>
+  </body>
+</html>

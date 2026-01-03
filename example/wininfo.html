@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" type="text/css" href="/styles.css" />
+    <title>ezcli/wininfo</title>
+</head>
+
+<body>
+    <section>
+        <h1>ezcli/wininfo (linux-only)</h1>
+
+<pre><code>
+typedef struct {
+    window_size_t x;
+    window_size_t y;
+} window_s;
+
+window_s cliwininfo();
+
+</code></pre>
+    </section>
+
+    <section>
+        <p>
+            this utility function gets the width and height of a terminal window (in terms
+            of characters), and returns it in a <code>window_s</code> struct.
+        </p>
+    </section>
+
+    <section>
+        <p>
+            <code>window_size_t</code> is just a name for an <code>unsigned short</code> because that's what
+            <code>ioctl()</code> internally returns the dimension sizes as.
+        </p>
+        <p>
+            <code>window_s.x</code> is the amount of columns.
+            <code>window_s.y</code> is the amount of rows.
+        </p>
+        <p>
+            this utility function can be used for all kinds of purposes but internally,
+            any kind of text centering utility such as <code>clicenter_vert</code> (see <a href="/clicenter">ezcli/clicenter</a>)
+            uses <code>cliwininfo()</code>.
+        </p>
+    </section>
+</body>
+
+</html>

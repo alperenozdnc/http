@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" type="text/css" href="/styles.css" />
+    <title>ezcli/addopt</title>
+  </head>
+
+  <body>
+    <section>
+      <h1>ezcli/addopt (linux-only)</h1>
+
+<pre><code>
+void addopt(cli_s *cli, ...opts);
+
+</code></pre>
+
+      <p>
+        allocates a variable amount of <code>opt_s</code> structs to the
+        <code>cli-&gt;opts</code> dynamic array in a <code>cli_s</code> struct.
+        <a href="/cli_s">see ezcli/cli_s</a> and
+        <a href="/opt_s">ezcli/opt_s</a> for more details.
+      </p>
+    </section>
+
+    <section>
+      <p>
+        note: <code>addopt()</code> does NOT take ownership of opts passed to
+        it. by “allocates”, i mean it allocates heap space for POINTERS of your
+        opts, not the stack memory they use.
+      </p>
+    </section>
+  </body>
+</html>

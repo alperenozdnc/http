@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" type="text/css" href="/styles.css" />
+    <title>ezcli/runcli</title>
+  </head>
+
+  <body>
+    <section>
+      <h1>ezcli/runcli</h1>
+
+      <pre><code>
+void runcli(cli_s *cli_p, int argc, char *argv[]);
+  </code></pre>
+
+      <p>parses and runs input in accordance to struct <code>cli_p</code>.</p>
+    </section>
+
+    <section>
+      <p>
+        <a href="/cli_s">see ezcli/cli_s</a> and
+        <a href="/initcli">ezcli/initcli</a> for an explanation on what
+        <code>cli_p</code> should be populated with.
+      </p>
+
+      <p>
+        <code>runcli()</code> expects <code>argv</code> to start with the
+        command name itself. you should inject a command name at
+        <code>argv[0]</code> when injecting artificial arguments into
+        <code>runcli()</code>.
+      </p>
+    </section>
+  </body>
+</html>
