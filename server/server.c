@@ -1,8 +1,14 @@
+#include <http/ctx.h>
 #include <http/def.h>
 #include <http/misc.h>
 #include <http/server.h>
 
+#include <http/utils/build_path.h>
+#include <http/utils/build_res.h>
+#include <http/utils/get_req_pathname.h>
 #include <http/utils/print_http_header.h>
+
+#include <ezcli/print.h>
 
 #include <arpa/inet.h>
 #include <netinet/in.h>
@@ -10,16 +16,11 @@
 
 #include <stdbool.h>
 #include <stdio.h>
+#include <stdlib.h>
 #include <string.h>
 #include <unistd.h>
 
-#include <ezcli/print.h>
-
-#define EXAMPLE_RESPONSE                                                       \
-    "HTTP/1.0 200 OK\r\nContent-Type: text/html\r\nContent-Length: "           \
-    "14\r\n\r\n<h1>Hello</h1>\r\n\r\n";
-
-bool server(in_port_t port) {
+bool server(in_port_t port, __attribute((unused)) ctx_s *ctx) {
     bool ret = true;
     int tcp_socket = socket(AF_INET, SOCK_STREAM, 0);
 
@@ -68,11 +69,25 @@ bool server(in_port_t port) {
         char req[HTTP_MAX_REQUEST_SIZE];
         memset(req, 0, HTTP_MAX_REQUEST_SIZE);
         read(client_fd, req, HTTP_MAX_REQUEST_SIZE);
+
+        if (!(*req)) {
+            close(client_fd);
+
+            continue;
+        }
+
         PRINT_ACTION_INFO(HTTP_REQUEST_PREFIX, req);
 
-        char *res = EXAMPLE_RESPONSE;
+        char *pathname = get_req_pathname(req);
+        char *path = build_path(ctx, pathname);
+        char *res = build_res(ctx, path);
+
         write(client_fd, res, strlen(res));
         PRINT_ACTION_INFO(HTTP_RESPONSE_PREFIX, res);
+
+        free(res);
+        free(path);
+        free(pathname);
 
         close(client_fd);
     }
