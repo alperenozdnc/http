@@ -1,6 +1,7 @@
 #include <http/ctx.h>
 #include <http/def.h>
 #include <http/mime.h>
+#include <http/utils/build_default_not_found_path.h>
 #include <http/utils/build_path.h>
 #include <http/utils/build_res.h>
 
@@ -108,7 +109,17 @@ not_found:
 
     free(usergen_not_found_page);
 
-    info->pathname = build_path(ctx, NOT_FOUND_DEFAULT_PAGE);
+    char *not_found_default_page = build_default_not_found_path();
+
+    if (!path_exists(not_found_default_page)) {
+        cliprint(CLI_ERROR, HTTP_PREFIX,
+                 "can't find the default 404 page in '.local'. you "
+                 "should run 'make install' in the project root. aborting.");
+
+        exit(EXIT_FAILURE);
+    }
+
+    info->pathname = not_found_default_page;
 }
 
 typedef struct {
