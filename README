@@ -7,3 +7,6 @@ defensive programming.
 
 you can use it by writing 'make install' after copying this repository but i
 wouldn't recommend it.
+
+all code under this project is licensed under the gnu general public license
+version 3. see the LICENSE file for details.
