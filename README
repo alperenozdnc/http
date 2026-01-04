@@ -1,0 +1,9 @@
+this is a simple http server written in C that only handles 'localhost:port' use.
+it doesn't have fancy things like hot-reloading, concurrency, or anything in that
+category.
+
+but it's really been a nice introduction to network programming and
+defensive programming.
+
+you can use it by writing 'make install' after copying this repository but i
+wouldn't recommend it.
