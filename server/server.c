@@ -20,7 +20,7 @@
 #include <string.h>
 #include <unistd.h>
 
-bool server(in_port_t port, __attribute((unused)) ctx_s *ctx) {
+bool server(in_port_t port, ctx_s *ctx) {
     bool ret = true;
     int tcp_socket = socket(AF_INET, SOCK_STREAM, 0);
 
