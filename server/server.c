@@ -4,9 +4,9 @@
 #include <http/server.h>
 
 #include <http/utils/build_path.h>
-#include <http/utils/build_res.h>
 #include <http/utils/get_req_pathname.h>
 #include <http/utils/print_http_header.h>
+#include <http/utils/respond.h>
 
 #include <ezcli/print.h>
 
@@ -80,12 +80,9 @@ bool server(in_port_t port, __attribute((unused)) ctx_s *ctx) {
 
         char *pathname = get_req_pathname(req);
         char *path = build_path(ctx, pathname);
-        char *res = build_res(ctx, path);
 
-        write(client_fd, res, strlen(res));
-        PRINT_ACTION_INFO(HTTP_RESPONSE_PREFIX, res);
+        respond(ctx, client_fd, path);
 
-        free(res);
         free(path);
         free(pathname);
 
