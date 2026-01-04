@@ -68,9 +68,10 @@ bool server(in_port_t port, ctx_s *ctx) {
 
         char req[HTTP_MAX_REQUEST_SIZE];
         memset(req, 0, HTTP_MAX_REQUEST_SIZE);
-        read(client_fd, req, HTTP_MAX_REQUEST_SIZE);
 
-        if (!(*req)) {
+        if (read(client_fd, req, HTTP_MAX_REQUEST_SIZE) < 0) {
+            perror("read()");
+
             close(client_fd);
 
             continue;
