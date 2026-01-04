@@ -1,109 +1,114 @@
 <!doctype html>
 <html lang="en">
-
-<head>
+  <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" type="text/css" href="/styles.css" />
     <title>ezcli</title>
-</head>
+  </head>
 
-<body>
+  <body>
+    <img src="/image.jpg" alt="cool ass image" />
+
     <section>
-        <h1>ezcli/root</h1>
+      <h1>ezcli/root</h1>
 
-        <p>
-            ezcli is a minimal but flexible cli library written in C, that has
-            self-documentation, embedded support, context passing, hooks, help
-            generation, autocompletion, and much more.
-        </p>
+      <p>
+        ezcli is a minimal but flexible cli library written in C, that has
+        self-documentation, embedded support, context passing, hooks, help
+        generation, autocompletion, and much more.
+      </p>
 
-        <p>
-            you can safely assume any section not labelled with
-            <code>platform-agnostic</code> is linux-only. and inside the actual
-            section contents, linux-only sections are explicitly declared.
-        </p>
+      <p>
+        you can safely assume any section not labelled with
+        <code>platform-agnostic</code> is linux-only. and inside the actual
+        section contents, linux-only sections are explicitly declared.
+      </p>
 
-        <p>
-            currently in <code>v1.5.8</code> with ~2600 lines of code (including
-            examples and tools).
-        </p>
+      <p>
+        currently in <code>v1.5.8</code> with ~2600 lines of code (including
+        examples and tools).
+      </p>
 
-        <ul>
-            <li>
-                if you are a first time user, you can start by reading
-                <a href="/entrypoint">ezcli/entrypoint</a>
-            </li>
+      <ul>
+        <li>
+          if you are a first time user, you can start by reading
+          <a href="/entrypoint">ezcli/entrypoint</a>
+        </li>
 
-            <li>
-                <span>
-                    source code can be seen in
-                    <a href="https://github.com/alperenozdnc/ezcli">
-                        https://github.com/alperenozdnc/ezcli</a>
-                </span>
-            </li>
+        <li>
+          <span>
+            source code can be seen in
+            <a href="https://github.com/alperenozdnc/ezcli">
+              https://github.com/alperenozdnc/ezcli</a
+            >
+          </span>
+        </li>
 
-            <li>
-                <span>you can also read documentation locally if you build
-                    <a
-                        href="https://github.com/alperenozdnc/ezcli/blob/master/docs/FEATURES.md#this-library-documents-itself">ezdocs</a>
-                </span>
-            </li>
-        </ul>
+        <li>
+          <span
+            >you can also read documentation locally if you build
+            <a
+              href="https://github.com/alperenozdnc/ezcli/blob/master/docs/FEATURES.md#this-library-documents-itself"
+              >ezdocs</a
+            >
+          </span>
+        </li>
+      </ul>
     </section>
 
     <section>
-        <h1>sections</h1>
+      <h1>sections</h1>
 
-        <ul>
-            <li><a href="/entrypoint">ezcli/entrypoint</a></li>
-            <li>
-                <a href="/cli_s">ezcli/cli_s</a><code>(platform-agnostic)</code>
-            </li>
-            <li>
-                <a href="/opt_s">ezcli/opt_s</a><code>(platform-agnostic)</code>
-            </li>
-            <li>
-                <a href="/specials">ezcli/specials</a><code>(platform-agnostic)</code>
-            </li>
+      <ul>
+        <li><a href="/entrypoint">ezcli/entrypoint</a></li>
+        <li>
+          <a href="/cli_s">ezcli/cli_s</a><code>(platform-agnostic)</code>
+        </li>
+        <li>
+          <a href="/opt_s">ezcli/opt_s</a><code>(platform-agnostic)</code>
+        </li>
+        <li>
+          <a href="/specials">ezcli/specials</a><code>(platform-agnostic)</code>
+        </li>
 
-            <li>
-                <a href="/external">ezcli/external</a><code>(platform-agnostic)</code>
-            </li>
+        <li>
+          <a href="/external">ezcli/external</a><code>(platform-agnostic)</code>
+        </li>
 
-            <li>
-                <a href="/initcli">ezcli/initcli</a><code>(platform-agnostic)</code>
-            </li>
+        <li>
+          <a href="/initcli">ezcli/initcli</a><code>(platform-agnostic)</code>
+        </li>
 
-            <li>
-                <a href="/runcli">ezcli/runcli</a>
-                <code>(platform-agnostic)</code>
-            </li>
+        <li>
+          <a href="/runcli">ezcli/runcli</a>
+          <code>(platform-agnostic)</code>
+        </li>
 
-            <li>
-                <a href="/freecli">ezcli/freecli</a>
-            </li>
+        <li>
+          <a href="/freecli">ezcli/freecli</a>
+        </li>
 
-            <li>
-                <a href="/cliprint">ezcli/cliprint</a><code>(platform-agnostic)</code>
-            </li>
-            <li><a href="/addopt">ezcli/addopt</a></li>
-            <li><a href="/allocopt">ezcli/allocopt</a></li>
-            <li><a href="/delopt">ezcli/delopt</a></li>
-            <li><a href="/askbinary">ezcli/askbinary</a></li>
-            <li>
-                <a href="/gettok">ezcli/gettok</a><code>(platform-agnostic)</code>
-            </li>
-            <li><a href="/autocomp">ezcli/autocomp</a></li>
-            <li><a href="/wininfo">ezcli/wininfo</a></li>
-            <li><a href="/clicenter">ezcli/clicenter</a></li>
+        <li>
+          <a href="/cliprint">ezcli/cliprint</a><code>(platform-agnostic)</code>
+        </li>
+        <li><a href="/addopt">ezcli/addopt</a></li>
+        <li><a href="/allocopt">ezcli/allocopt</a></li>
+        <li><a href="/delopt">ezcli/delopt</a></li>
+        <li><a href="/askbinary">ezcli/askbinary</a></li>
+        <li>
+          <a href="/gettok">ezcli/gettok</a><code>(platform-agnostic)</code>
+        </li>
+        <li><a href="/autocomp">ezcli/autocomp</a></li>
+        <li><a href="/wininfo">ezcli/wininfo</a></li>
+        <li><a href="/clicenter">ezcli/clicenter</a></li>
 
-            <li>
-                <a href="/structure">ezcli/structure</a><code>(platform-agnostic)</code>
-            </li>
-            <li><a href="/embedded">ezcli/embedded</a></li>
-        </ul>
+        <li>
+          <a href="/structure">ezcli/structure</a
+          ><code>(platform-agnostic)</code>
+        </li>
+        <li><a href="/embedded">ezcli/embedded</a></li>
+      </ul>
     </section>
-</body>
-
+  </body>
 </html>
